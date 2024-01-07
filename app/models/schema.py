@@ -9,7 +9,6 @@ class HeadersModel:
     sales_rep_id: Optional[int]
     buyer_id: Optional[int]
     active: Optional[str]
-    # Not having = None for the reletionship would result in circular import error.
     buyers: Optional["BuyersModel"] = None
     sales_rep: Optional["SalesRepModel"] = None
     lines: Optional["LinesModel"] = None
@@ -32,9 +31,6 @@ class BuyersModel:
     buyer_id: Optional[int]
     name: Optional[str]
 
-    # Reflect the relationships
-    header: Optional["HeadersModel"] = None
-
 
 @dataclass
 class ItemsModel:
@@ -42,25 +38,18 @@ class ItemsModel:
     name: Optional[str]
     description: Optional[str]
 
-    # Reflect the relationships
-    # lines: Optional[List["LinesModel"]]
-
 
 @dataclass
 class MarketsModel:
     market_id: Optional[int]
     name: Optional[str]
     location: Optional[str]
-    lines: Optional[List["LinesModel"]]
 
 
 @dataclass
 class ResourceModel:
     resource_id: Optional[int]
     name: Optional[str]
-
-    # Reflect the relationships
-    sales_rep: Optional["SalesRepModel"]= None
 
 
 @dataclass
@@ -69,5 +58,4 @@ class SalesRepModel:
     resource_id: Optional[int]
 
     # Reflect the relationships
-    header: Optional["HeadersModel"] = None
     resource: Optional["ResourceModel"] = None
