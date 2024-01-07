@@ -65,10 +65,6 @@ query MyQuery {
     headerId
     name
     salesRepId
-    buyers {
-      buyerId
-      name
-    }
     lines {
       creationDate
       headerId
@@ -76,10 +72,28 @@ query MyQuery {
       lineId
       marketId
       name
+      items {
+        description
+        itemId
+        name
+      }
+      markets {
+        location
+        marketId
+        name
+      }
     }
     salesRep {
       resourceId
       salesRepId
+      resource {
+        name
+        resourceId
+      }
+    }
+    buyers {
+      buyerId
+      name
     }
   }
 }
@@ -96,21 +110,35 @@ query MyQuery {
         "headerId": 1,
         "name": "Header Name 1",
         "salesRepId": 102,
-        "buyers": {
-          "buyerId": 1003,
-          "name": "Simon Sims"
-        },
         "lines": {
           "creationDate": "2023-01-01",
           "headerId": 1,
           "itemId": 701,
           "lineId": 55001,
           "marketId": 2201,
-          "name": "Line Name 1"
+          "name": "Line Name 1",
+          "items": {
+            "description": "gold",
+            "itemId": 701,
+            "name": "gold"
+          },
+          "markets": {
+            "location": "Europe",
+            "marketId": 2201,
+            "name": "NotSo Wet Market"
+          }
         },
         "salesRep": {
           "resourceId": 12,
-          "salesRepId": 102
+          "salesRepId": 102,
+          "resource": {
+            "name": "Jaba Maba",
+            "resourceId": 12
+          }
+        },
+        "buyers": {
+          "buyerId": 1003,
+          "name": "Simon Sims"
         }
       },
       {
@@ -119,21 +147,35 @@ query MyQuery {
         "headerId": 2,
         "name": "Header Name 2",
         "salesRepId": 105,
-        "buyers": {
-          "buyerId": 1002,
-          "name": "Bobby DropTable"
-        },
         "lines": {
           "creationDate": "2022-01-05",
           "headerId": 2,
           "itemId": 701,
           "lineId": 55003,
           "marketId": 2203,
-          "name": "Line Name 3"
+          "name": "Line Name 3",
+          "items": {
+            "description": "gold",
+            "itemId": 701,
+            "name": "gold"
+          },
+          "markets": {
+            "location": "Africa",
+            "marketId": 2203,
+            "name": "Rainy Days Market"
+          }
         },
         "salesRep": {
           "resourceId": 15,
-          "salesRepId": 105
+          "salesRepId": 105,
+          "resource": {
+            "name": "Viper Song",
+            "resourceId": 15
+          }
+        },
+        "buyers": {
+          "buyerId": 1002,
+          "name": "Bobby DropTable"
         }
       },
       {
@@ -142,21 +184,35 @@ query MyQuery {
         "headerId": 3,
         "name": "Header Name 3",
         "salesRepId": 101,
-        "buyers": {
-          "buyerId": 1005,
-          "name": "Tom Riddle"
-        },
         "lines": {
           "creationDate": "2024-01-01",
           "headerId": 3,
           "itemId": 704,
           "lineId": 55004,
           "marketId": 2204,
-          "name": "Line Name 4"
+          "name": "Line Name 4",
+          "items": {
+            "description": "dirt",
+            "itemId": 704,
+            "name": "dirt"
+          },
+          "markets": {
+            "location": "North America",
+            "marketId": 2204,
+            "name": "PewPew market"
+          }
         },
         "salesRep": {
           "resourceId": 11,
-          "salesRepId": 101
+          "salesRepId": 101,
+          "resource": {
+            "name": "Jim Salibana",
+            "resourceId": 11
+          }
+        },
+        "buyers": {
+          "buyerId": 1005,
+          "name": "Tom Riddle"
         }
       }
     ]
