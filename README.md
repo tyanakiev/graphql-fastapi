@@ -219,3 +219,5 @@ query MyQuery {
   }
 }
 ```
+
+![image](https://github.com/tyanakiev/graphql-fastapi/assets/5628399/9602e42c-f021-4af1-bad8-5105f38723d4)
