@@ -33,9 +33,12 @@ Follow these steps to download, install requirements, and start the FastAPI serv
 3. Create and activate a virtual environment:
 
    ```python -m venv venv```
-   ```source venv/bin/activate   # On Windows, use `venv\Scripts\activate```
+   
+   ```source venv/bin/activate```
+   #### On Windows, use
+   ```venv\Scripts\activate```
 
-4. Install dependencies:
+5. Install dependencies:
 
    ```pip install -r requirements.txt```
 
