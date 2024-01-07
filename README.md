@@ -28,7 +28,7 @@ Follow these steps to download, install requirements, and start the FastAPI serv
 
 2. Change into the project directory:
 
-   ```cd your-fastapi-project```
+   ```cd graphql-fastapi```
 
 3. Create and activate a virtual environment:
 
@@ -59,9 +59,28 @@ Visit http://127.0.0.1:8000/graphql in your browser to access the GraphQL Playgr
 
 ```graphql
 query MyQuery {
-  getResource {
+  getHeaders {
+    active
+    buyerId
+    headerId
     name
-    resourceId
+    salesRepId
+    buyers {
+      buyerId
+      name
+    }
+    lines {
+      creationDate
+      headerId
+      itemId
+      lineId
+      marketId
+      name
+    }
+    salesRep {
+      resourceId
+      salesRepId
+    }
   }
 }
 ```
@@ -70,30 +89,75 @@ query MyQuery {
 ```
 {
   "data": {
-    "getResource": [
+    "getHeaders": [
       {
-        "name": "Jim Salibana",
-        "resourceId": 11
+        "active": "Y",
+        "buyerId": 1003,
+        "headerId": 1,
+        "name": "Header Name 1",
+        "salesRepId": 102,
+        "buyers": {
+          "buyerId": 1003,
+          "name": "Simon Sims"
+        },
+        "lines": {
+          "creationDate": "2023-01-01",
+          "headerId": 1,
+          "itemId": 701,
+          "lineId": 55001,
+          "marketId": 2201,
+          "name": "Line Name 1"
+        },
+        "salesRep": {
+          "resourceId": 12,
+          "salesRepId": 102
+        }
       },
       {
-        "name": "Jaba Maba",
-        "resourceId": 12
+        "active": "Y",
+        "buyerId": 1002,
+        "headerId": 2,
+        "name": "Header Name 2",
+        "salesRepId": 105,
+        "buyers": {
+          "buyerId": 1002,
+          "name": "Bobby DropTable"
+        },
+        "lines": {
+          "creationDate": "2022-01-05",
+          "headerId": 2,
+          "itemId": 701,
+          "lineId": 55003,
+          "marketId": 2203,
+          "name": "Line Name 3"
+        },
+        "salesRep": {
+          "resourceId": 15,
+          "salesRepId": 105
+        }
       },
       {
-        "name": "Jim Harpy",
-        "resourceId": 13
-      },
-      {
-        "name": "Soltan Han",
-        "resourceId": 14
-      },
-      {
-        "name": "Viper Song",
-        "resourceId": 15
-      },
-      {
-        "name": "Kilrog HowtoexitVIM",
-        "resourceId": 16
+        "active": "N",
+        "buyerId": 1005,
+        "headerId": 3,
+        "name": "Header Name 3",
+        "salesRepId": 101,
+        "buyers": {
+          "buyerId": 1005,
+          "name": "Tom Riddle"
+        },
+        "lines": {
+          "creationDate": "2024-01-01",
+          "headerId": 3,
+          "itemId": 704,
+          "lineId": 55004,
+          "marketId": 2204,
+          "name": "Line Name 4"
+        },
+        "salesRep": {
+          "resourceId": 11,
+          "salesRepId": 101
+        }
       }
     ]
   }
