@@ -28,7 +28,7 @@ Follow these steps to download, install requirements, and start the FastAPI serv
 
 2. Change into the project directory:
 
-   ```cd your-fastapi-project```
+   ```cd graphql-fastapi```
 
 3. Create and activate a virtual environment:
 
