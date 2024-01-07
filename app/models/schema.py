@@ -1,8 +1,9 @@
-from pydantic import BaseModel
+from dataclasses import dataclass
 from typing import Optional, List
 
 
-class HeadersModel(BaseModel):
+@dataclass
+class HeadersModel:
     header_id: Optional[int]
     name: Optional[str]
     sales_rep_id: Optional[int]
@@ -14,7 +15,8 @@ class HeadersModel(BaseModel):
     lines: Optional["LinesModel"] = None
 
 
-class LinesModel(BaseModel):
+@dataclass
+class LinesModel:
     line_id: Optional[int]
     header_id: Optional[int]
     name: Optional[str]
@@ -22,15 +24,11 @@ class LinesModel(BaseModel):
     item_id: Optional[int]
     creation_date: Optional[str]
     header: Optional["HeadersModel"] = None
-    # markets: Optional["MarketsModel"] = None
-
-    # Reflect the relationships
-    # header: Optional["HeadersModel"]
-    # market: Optional["MarketsModel"]
-    # item: Optional["ItemsModel"]
+    market: Optional["MarketsModel"] = None
 
 
-class BuyersModel(BaseModel):
+@dataclass
+class BuyersModel:
     buyer_id: Optional[int]
     name: Optional[str]
 
@@ -38,7 +36,8 @@ class BuyersModel(BaseModel):
     header: Optional["HeadersModel"] = None
 
 
-class ItemsModel(BaseModel):
+@dataclass
+class ItemsModel:
     item_id: Optional[int]
     name: Optional[str]
     description: Optional[str]
@@ -47,26 +46,28 @@ class ItemsModel(BaseModel):
     # lines: Optional[List["LinesModel"]]
 
 
-class MarketsModel(BaseModel):
+@dataclass
+class MarketsModel:
     market_id: Optional[int]
     name: Optional[str]
     location: Optional[str]
-
-    # Reflect the relationships
-    # lines: Optional[List["LinesModel"]]
+    lines: Optional[List["LinesModel"]]
 
 
-class ResourceModel(BaseModel):
+@dataclass
+class ResourceModel:
     resource_id: Optional[int]
     name: Optional[str]
 
     # Reflect the relationships
-    # sales_rep: Optional["SalesRepModel"]
+    sales_rep: Optional["SalesRepModel"]= None
 
 
-class SalesRepModel(BaseModel):
+@dataclass
+class SalesRepModel:
     sales_rep_id: Optional[int]
     resource_id: Optional[int]
 
     # Reflect the relationships
     header: Optional["HeadersModel"] = None
+    resource: Optional["ResourceModel"] = None

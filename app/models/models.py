@@ -26,7 +26,8 @@ class Lines(Base):
     item_id = Column(Integer, ForeignKey('items.item_id'))
     creation_date = Column(String)
     headers: Mapped["Headers"] = relationship(back_populates="lines", uselist=False)
-
+    markets: Mapped["Markets"] = relationship(back_populates="lines", uselist=False)
+    items: Mapped["Items"] = relationship(back_populates="lines", uselist=False)
 
 
 class Buyers(Base):
@@ -43,6 +44,7 @@ class Items(Base):
     item_id = Column(Integer, primary_key=True)
     name = Column(String)
     description = Column(String)
+    lines: Mapped["Lines"] = relationship(back_populates="items", uselist=False)
 
 
 class Markets(Base):
@@ -51,6 +53,7 @@ class Markets(Base):
     market_id = Column(Integer, primary_key=True)
     name = Column(String)
     location = Column(String)
+    lines: Mapped["Lines"] = relationship(back_populates="markets", uselist=False)
 
 
 class Resource(Base):
@@ -58,6 +61,7 @@ class Resource(Base):
 
     resource_id = Column(Integer, primary_key=True)
     name = Column(String)
+    sales_rep: Mapped["SalesRep"] = relationship(back_populates="resource", uselist=False)
 
 
 class SalesRep(Base):
@@ -66,3 +70,4 @@ class SalesRep(Base):
     sales_rep_id = Column(Integer, primary_key=True)
     resource_id = Column(Integer, ForeignKey('resource.resource_id'))
     headers: Mapped["Headers"] = relationship(back_populates="sales_rep", uselist=False)
+    resource: Mapped["Resource"] = relationship(back_populates="sales_rep", uselist=False)

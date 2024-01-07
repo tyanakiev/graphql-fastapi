@@ -23,14 +23,14 @@ class Lines:
     market_id: int
     item_id: int
     creation_date: str
-    header: Optional["Headers"]
+    markets: Optional["Markets"]
+    items: Optional["Items"]
 
 
 @strawberry.type
 class Buyers:
     buyer_id: int
     name: Optional[str]
-    header: Optional["Headers"]
 
 
 @strawberry.type
@@ -57,4 +57,4 @@ class Resource:
 class SalesRep:
     sales_rep_id: int
     resource_id: int
-    header: Optional["Headers"]
+    resource: Optional[Resource]
