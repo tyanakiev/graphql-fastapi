@@ -181,46 +181,55 @@ query MyQuery {
           "name": "Bobby DropTable"
         }
       },
-      {
-        "active": "N",
-        "buyerId": 1005,
-        "headerId": 3,
-        "name": "Header Name 3",
-        "salesRepId": 101,
-        "lines": {
-          "creationDate": "2024-01-01",
-          "headerId": 3,
-          "itemId": 704,
-          "lineId": 55004,
-          "marketId": 2204,
-          "name": "Line Name 4",
-          "items": {
-            "description": "dirt",
-            "itemId": 704,
-            "name": "dirt"
-          },
-          "markets": {
-            "location": "North America",
-            "marketId": 2204,
-            "name": "PewPew market"
-          }
-        },
-        "salesRep": {
-          "resourceId": 11,
-          "salesRepId": 101,
-          "resource": {
-            "name": "Jim Salibana",
-            "resourceId": 11
-          }
-        },
-        "buyers": {
-          "buyerId": 1005,
-          "name": "Tom Riddle"
-        }
-      }
     ]
   }
 }
 ```
 
-![image](https://github.com/tyanakiev/graphql-fastapi/assets/5628399/9602e42c-f021-4af1-bad8-5105f38723d4)
+## Mutation:
+
+```
+mutation MyMutation {
+  updateHeader(header: {name: "Mutation Update", headerId: 6}) {
+    name
+    salesRepId
+    buyerId
+    active
+  }
+}
+```
+
+Result:
+
+```
+{
+  "data": {
+    "updateHeader": {
+      "name": "Mutation Update",
+      "salesRepId": 105,
+      "buyerId": 1002,
+      "active": "N"
+    }
+  }
+}
+```
+
+
+### Insert:
+
+```
+mutation MyMutation {
+  createHeader(
+    header: {headerId: 7, name: "TEST", buyerId: 1002, active: "Y", salesRepId: 105}
+  ) {
+    name
+    salesRepId
+    buyerId
+    active
+  }
+}
+```
+
+
+
+![image](https://github.com/tyanakiev/graphql-fastapi/assets/5628399/d091ba9b-24d4-44d8-9eaf-c29edbd46a81)
