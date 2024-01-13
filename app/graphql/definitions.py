@@ -6,13 +6,24 @@ import strawberry
 @strawberry.type
 class Headers:
     header_id: int
-    name: str
+    name: Optional[str]
     sales_rep_id: Optional[int]
     buyer_id: Optional[int]
     active: Optional[str]
     buyers: Optional["Buyers"]
     sales_rep: Optional["SalesRep"]
     lines: Optional["Lines"]
+
+
+@strawberry.input
+class HeadersInput:
+    header_id: int
+    name: Optional[str]
+
+
+@strawberry.input
+class HeadersDelete:
+    header_id: int
 
 
 @strawberry.type
@@ -31,6 +42,17 @@ class Lines:
 class Buyers:
     buyer_id: int
     name: Optional[str]
+
+
+@strawberry.input
+class BuyersInput:
+    buyer_id: int
+    name: Optional[str]
+
+
+@strawberry.input
+class BuyersDelete:
+    buyer_id: int
 
 
 @strawberry.type
