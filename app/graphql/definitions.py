@@ -19,6 +19,9 @@ class Headers:
 class HeadersInput:
     header_id: int
     name: Optional[str]
+    sales_rep_id: Optional[int]
+    buyer_id: Optional[int]
+    active: Optional[str]
 
 
 @strawberry.input
